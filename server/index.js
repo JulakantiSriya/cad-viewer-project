@@ -7,13 +7,12 @@ const fs = require("fs");
 const app = express();
 app.use(cors());
 
-// Set up storage for uploads
 const storage = multer.diskStorage({
   destination: "./uploads/",
   filename: (req, file, cb) => {
     const filePath = path.join(__dirname, "uploads", file.originalname);
 
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync(filePath)) { //checking if file already exists
       req.fileExists = true;
     } else {
       req.fileExists = false;
@@ -47,7 +46,6 @@ app.post("/upload", upload.single("model"), (req, res) => {
   });
 });
 
-// Serve uploaded models as static files
 app.use("/models", express.static(path.join(__dirname, "uploads")));
 
 app.listen(3100, () => console.log("Server running on port 3100"));

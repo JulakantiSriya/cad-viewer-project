@@ -168,7 +168,7 @@ const ModelViewer = ({ modelUrl }) => {
   return (
     <div>
       <ToastContainer />
-      <div ref={mountRef} style={{ width: "100%", height: "100vh" }} />
+      <div ref={mountRef} style={{ width: "100%", height: "79vh" }} />
       {mesh && (
         <button
           onClick={exportToOBJ}
